@@ -1,0 +1,7 @@
+{
+  "name": "okrproject",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
