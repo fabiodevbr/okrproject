@@ -1,0 +1,57 @@
+<div class="user-card-container">
+  <ion-fab  class="fab">
+    <ion-fab-button (click)="removeTeam()" color="danger" size="small">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<div class="InputContainer">
+  <input (keyup.enter)="updateNameList()" (focus)="isFocused = true"
+  (blur)="onBlur()" type="text" name="text" class="input" id="input" placeholder="Digite o nome do time..." [(ngModel)]="titleList">
+  
+<div *ngIf="isFocused" class="border"></div>
+
+<button (click)="updateNameList()" *ngIf="isFocused" class="micButton">
+  <ion-icon name="checkmark"></ion-icon>
+</button>
+
+</div>
+
+<span style="font-size: 12px;" *ngIf="!(users | async)?.length">
+  Não possui usuários
+</span>
+
+  <!-- Card de Usuário -->
+  <div class="user-card" *ngFor="let user of users | async">
+    <div class="user-info">
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.jobTitle }}</p>
+    </div>
+    <div class="user-meta">
+      <span class="role">{{ user.role }}</span>
+      <span (click)="onDeleteUser(user)" class="status" [ngClass]="'inactive'">Remover</span>
+    </div>
+  </div>
+
+  <div class="form-group autocomplete-container" *ngIf="showSearchUser">
+    <input 
+      type="text" 
+      id="teamLeader" 
+      placeholder="Digite para buscar um usuário"
+      [(ngModel)]="searchUser"
+      (input)="onSearch($event)"
+    />
+    <div *ngIf="showFilterUsers" class="autocomplete-list">
+      <div 
+        *ngFor="let user of usersSelect | async" 
+        (click)="selectUser(user)"
+        class="autocomplete-item"
+      >
+        {{ user.name }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!showSearchUser" class="actions">
+    <button class="btn-clear" (click)="onAddUser()">Adicionar usuário</button>
+  </div>
+  
+</div>

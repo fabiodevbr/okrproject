@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -6,13 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+   {
+    category: 'Goals',
+    pages: [
+      { title: 'Inicio', url: '/home', icon: 'home' },
+      { title: 'Companhias', url: '/companies', icon: 'business' },
+      { title: 'Times', url: '/teams', icon: 'people' },
+      { title: 'Usuários', url: '/users', icon: 'person' },
+    ]
+   },
+   {
+    category: 'IA',
+    pages: [
+      { title: 'Mapa estratégico', url: '/strategic-map', icon: 'chatbubbles' },
+    ]
+   }
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  public labels = [];
+  constructor(public router: Router) {}
 }

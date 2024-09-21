@@ -1,0 +1,115 @@
+.okr-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    cursor: grab;
+  }
+  
+  .okr-list-year,
+  .okr-list-quarter,
+  .okr-list-sub-okr-quarter {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 40px; /* Espaçamento entre as seções */
+  }
+
+  .okr-list-quarter,
+  .okr-list-sub-okr-quarter {
+    border-top: 2px dotted #ddd;
+    margin-top: 48px;
+    padding-top: 8px;
+  }
+  
+  .okr-card-container {
+    position: relative;
+    margin-right: 20px; /* Espaçamento entre os cards */
+  }
+  
+  .okr-card-container:last-child {
+    margin-right: 0; /* Remove o espaçamento depois do último card */
+  }
+  
+  /* A linha de conexão entre as seções */
+  .line {
+    position: absolute;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background-color: #ddd;
+    transform: translateX(-50%);
+    z-index: 10000;
+  }
+  
+  /* Alinha a linha verticalmente para o próximo conjunto de cards */
+  .okr-list-quarter .okr-card-container:first-child .line,
+  .okr-list-sub-okr-quarter .okr-card-container:first-child .line {
+   
+}
+  
+  /* Remover linha abaixo do último card da última seção */
+  .okr-list-sub-okr-quarter .okr-card-container:last-child .line {
+    display: none;
+  }
+
+  .okr-list-sub-okr-quarter .okr-card-container:nth-last-child(2) .line {
+    display: none;
+  }
+
+  app-okr-card {
+    display: flex;
+    justify-content: center;
+  }
+
+  .zoom-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    position: fixed;
+    right: 24px;
+    top: 56px;
+  }
+  
+  .zoom-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .zoom-in {
+    cursor: zoom-in;
+  }
+
+  .zoom-out {
+    cursor: zoom-out;
+  }
+  
+  .zoom-btn:hover {
+    background-color: #2980b9;
+  }
+  
+  .zoom-label {
+    font-size: 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .icon-add {
+    transform: translate(-11px, 36px);
+    font-size: 24px;
+    cursor: pointer;
+  }

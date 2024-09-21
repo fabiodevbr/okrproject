@@ -1,0 +1,33 @@
+<div class="chat-container">
+  
+  <div *ngIf="!messages.length" class="menu-display">
+  <app-list-menu  [options]="options" (selectedOption)="selectOption($event)"></app-list-menu>
+</div>
+  <div class="chat-messages" #chatMessages>
+    <div *ngFor="let message of messages" [ngClass]="{'user-message': message.user, 'bot-message': !message.user}">
+      <app-card-list-user *ngIf="message?.type === 'userVerify'"
+      (addUser)="selectOption('Adicionar usuário')" (editUser)="selectOption('Editar usuário', $event)"></app-card-list-user>
+      <app-card-list-team *ngIf="message?.type === 'teamVerify'"
+      (addUser)="selectOption('Adicionar usuário')" (editUser)="selectOption('Editar usuário', $event)"></app-card-list-team>
+      <app-card-list-okr *ngIf="message?.type === 'okrListVerify'"
+      (addUser)="selectOption('Adicionar pilar')" (editTeam)="openModalStrategicMap()"></app-card-list-okr>
+      <div *ngIf="message.type === 'message'" [innerHTML]="message.text"></div>
+    </div>
+  </div>
+  
+  <div class="chat-input" >
+    <button (click)="backMenu()" *ngIf="chatStep === 'addUser'" class="button-back">Voltar menu</button>
+    <input 
+    *ngIf="chatStep === 'message'"
+      type="text" 
+      [placeholder]="'Escolha uma das opções dos cards acima para iniciar a conversa'" 
+      disabled
+      [(ngModel)]="newMessage" 
+      (keyup.enter)="sendMessage(true)"
+    />
+    <app-list-menu style="width: 100%;" [menuBottom]="false" *ngIf="chatStep === 'showMenu'"  [options]="options" (selectedOption)="selectOption($event)"></app-list-menu>
+    <!-- <button *ngIf="" (click)="sendMessage(true)">Enviar</button> -->
+    <app-form-add-user [userForm]="userForm" (addUser)="addUserFromForm($event)" [id]="idFormUser" *ngIf="chatStep === 'addUser'" style="width: 100%;"></app-form-add-user>
+    <app-form-add-team *ngIf="chatStep === 'addTeam'" style="width: 100%;" [teamForm]="teamForm"></app-form-add-team>
+  </div>
+</div>

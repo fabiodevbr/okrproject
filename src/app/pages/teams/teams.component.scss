@@ -1,0 +1,77 @@
+ion-content {
+    --background: #F9FAFB;
+}
+
+ion-header {
+    box-shadow: none;
+    border-bottom: 1px solid var(--okr-bg-border);
+}
+
+.top-content {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: 16px 0;
+}
+
+ion-button {
+    --background: var(--okr-bg-primary);
+}
+
+ion-grid {
+    background: #FFF;
+    border: solid 1px var(--okr-bg-border);
+    padding: 12px;
+}
+
+.col-title {
+    border-style: solid;
+    border-color: var(--okr-bg-border);
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+  }
+
+  .col-title-last {
+    border-style: solid;
+    border-color: var(--okr-bg-border);
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    font-weight: 700
+  }
+
+  .col-item {
+    border-style: solid;
+    border-color: var(--okr-bg-border);
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .col-item-last {
+    border-style: solid;
+    border-color: var(--okr-bg-border);
+    border-right-width: 0px;
+    border-bottom-width: 1px;
+    border-top-width: 0px;
+    border-left-width: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }

@@ -1,0 +1,32 @@
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Times</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" class="ion-padding">
+    <div class="top-content">
+      <ion-button>
+        Add time
+      </ion-button>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col class="col-title" size="12" size-sm="3">Nome</ion-col>
+        <ion-col class="col-title" size="12" size-sm="3">Líder</ion-col>
+        <ion-col class="col-title" size="12" size-sm="3">Membros</ion-col>
+        <ion-col class="col-title-last" size="12" size-sm="3">KPIs</ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let team of listTeams">
+        <ion-col class="col-item" size="12" size-sm="3">{{team.name}}</ion-col>
+        <ion-col class="col-item" size="12" size-sm="3">{{team.leader}}</ion-col>
+        <ion-col class="col-item" size="12" size-sm="3">{{team.members.length}}</ion-col>
+        <ion-col class="col-item-last" size="12" size-sm="3">
+          <ion-icon *ngIf="team.kpiEnabled" color="success" name="checkmark-circle-outline"></ion-icon>
+          <ion-icon *ngIf="!team.kpiEnabled" color="danger" name="close-circle-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,15 @@
+.content {
+    display: flex;
+    padding: 24px;
+    align-items: start;
+    overflow-x: scroll;
+
+    &__add-team {
+        margin-left: 24px;
+    }
+}
+
+ion-toolbar {
+  --background: var(--okr-bg-primary);
+  color: #FFF;
+}

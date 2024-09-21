@@ -1,0 +1,62 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-title>Mapa Estratégico</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()" >
+        <ion-icon color="dark" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+<div class="okr-list" [style.transform]="'scale(' + zoomLevel + ')' + ' translate(' + translateX + 'px, ' + translateY + 'px)'"
+(mousedown)="onMouseDown($event)">
+  <div class="okr-list-year"> 
+    <div class="okr-card-container">
+      <app-okr-card [okr]="okr1"></app-okr-card>
+      <div class="line" (click)="openAddOKR()"><ion-icon class="icon-add" name="add-circle" color="primary"></ion-icon></div>
+      <div class="okr-list-quarter"> 
+        
+        <div class="okr-card-container">
+          <app-okr-card [okr]="okr2"></app-okr-card>
+          <div class="line" (click)="openAddOKR()">
+            <ion-icon class="icon-add" name="add-circle" color="primary"></ion-icon>
+          </div>
+          <div class="okr-list-sub-okr-quarter"> 
+            <div class="okr-card-container">
+              <app-okr-card [okr]="okr3"></app-okr-card>
+              <div class="line" (click)="openAddOKR()">
+                <ion-icon class="icon-add" name="add-circle" color="primary"></ion-icon>
+
+              </div>
+            </div>
+            <div class="okr-card-container">
+              <app-okr-card [okr]="okr3"></app-okr-card>
+            </div>
+          </div>
+        </div>
+        <div class="okr-card-container">
+          <app-okr-card [okr]="okr2"></app-okr-card>
+          <div class="line" (click)="openAddOKR()">
+            <ion-icon class="icon-add" name="add-circle" color="primary"></ion-icon>
+
+          </div>
+        </div>
+        <div class="okr-card-container">
+          <app-okr-card [okr]="okr2"></app-okr-card>
+          <div class="line" (click)="openAddOKR()">
+            <ion-icon class="icon-add" name="add-circle" color="primary"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="zoom-controls">
+  <button class="zoom-btn zoom-out" (click)="zoomOut()">&#x2212;</button>
+  <span class="zoom-label">Zoom</span>
+  <button class="zoom-btn zoom-in" (click)="zoomIn()">&#x2b;</button>
+</div>
+</ion-content>

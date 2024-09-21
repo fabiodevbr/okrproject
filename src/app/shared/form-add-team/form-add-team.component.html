@@ -1,0 +1,49 @@
+<div class="team-form-container">
+  <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      
+      <!-- Campo Nome do Time -->
+      <div class="form-group">
+        <label for="teamName">Nome do Time</label>
+        <input 
+          id="teamName" 
+          type="text" 
+          formControlName="teamName" 
+          placeholder="Digite o nome do time"
+        />
+      </div>
+
+      <!-- Campo Selecionar Líder com Autocomplete -->
+      <div class="form-group autocomplete-container">
+        <label for="teamLeader">Líder do Time</label>
+        <input 
+          type="text" 
+          id="teamLeader" 
+          placeholder="Digite para buscar o líder"
+          (input)="filterLeaders()"
+        />
+        <div *ngIf="filteredLeaders.length > 0" class="autocomplete-list">
+          <div 
+            *ngFor="let leader of filteredLeaders" 
+            (click)="selectLeader(leader)"
+            class="autocomplete-item"
+          >
+            {{ leader.name }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Campo Selecionar Usuários -->
+      <div class="form-group">
+        <label for="teamMembers">Membros do Time</label>
+        <select id="teamMembers" formControlName="teamMembers" multiple>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- Botão de Submissão -->
+    <button [disabled]="!teamForm.valid" type="submit" class="btn-submit">{{id.length ? 'Editar Time' : 'Adicionar Time'}}</button>
+  </form>
+</div>

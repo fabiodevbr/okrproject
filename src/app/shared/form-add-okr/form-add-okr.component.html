@@ -1,0 +1,42 @@
+<form [formGroup]="okrForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title" type="text">
+  </div>
+<!-- 
+  <div>
+    <label for="leader">Leader:</label>
+    <input id="leader" formControlName="leader" type="text">
+  </div> -->
+
+  <div>
+    <label for="timeframe">Timeframe:</label>
+    <select id="timeframe" formControlName="timeframe">
+      <option value="2024">2024</option>
+      <option value="Q4">Q4</option>
+      <option value="Q3">Q3</option>
+      <option value="Q2">Q2</option>
+      <option value="Q1">Q1</option>
+    </select>
+  </div>
+
+  <div formArrayName="results">
+    <div *ngFor="let result of results.controls; let i=index" [formGroupName]="i">
+      <div>
+        <label for="name-{{i}}">Result Name:</label>
+        <input id="name-{{i}}" formControlName="name" type="text">
+      </div>
+
+      <div>
+        <label for="percent-{{i}}">Percent:</label>
+        <input id="percent-{{i}}" formControlName="percent" type="number" min="0" max="100">
+      </div>
+
+      <button type="button" (click)="removeResult(i)" *ngIf="results.length > 1">Remove</button>
+    </div>
+  </div>
+
+  <button type="button" (click)="addResult()">Add Result</button>
+
+  <button type="submit">Submit</button>
+</form>

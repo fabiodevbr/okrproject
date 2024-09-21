@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="container">
+    <div class="left">
+     {{okr.status}}
+    </div>
+    <div class="right">
+      <div class="text-wrap">
+        <span class="text-content">
+          <b class="text-link">{{okr.title}}</b> 
+          <div class="i-mouse">
+          <ion-icon class="icone" name="alert-circle-outline"></ion-icon>
+          <div class="popup">
+            Lista de resultados
+            <p><ion-icon color="light" name="checkmark-outline"></ion-icon> resultado 1</p>
+            <p><ion-icon color="light" name="checkmark-outline"></ion-icon> resultado 2</p>
+            <p><ion-icon color="light" name="checkmark-outline"></ion-icon> resultado 3</p>
+        </div>
+      </div>
+        </span>
+        <span class="time">Esse OKR está em <b class="text-link">{{okr.progress}}%</b></span>
+      </div>
+      <div class="button-wrap">
+        <button class="primary-cta">Novo OKR</button>
+        <button class="secondary-cta">Editar OKR</button>
+      </div>
+    </div>
+  </div>
+</div>

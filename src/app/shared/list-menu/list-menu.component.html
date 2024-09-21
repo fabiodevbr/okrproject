@@ -1,0 +1,18 @@
+<div class="menu-container">
+  <div 
+    class="menu-card" 
+    *ngFor="let option of options" 
+    (mouseenter)="hoveredOption = option" 
+    (mouseleave)="hoveredOption = null"
+  >
+    <div class="menu-icon">
+      <ion-icon [name]="option.icon"></ion-icon>
+    </div>
+    <div class="menu-title">{{ option.title }}</div>
+    <div [ngClass]="menuBottom ? 'sub-menu-down' : 'sub-menu-top'" *ngIf="hoveredOption === option">
+      <div (click)="selectOption(action)" class="sub-option" *ngFor="let action of option.actions">
+        {{ action }}
+      </div>
+    </div>
+  </div>
+</div>

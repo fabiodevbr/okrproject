@@ -1,0 +1,113 @@
+/* Estilo geral do formulário */
+form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    overflow-y: scroll;
+    height: 600px;
+  }
+  
+  /* Estilo das labels e inputs */
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  /* Estilo dos botões */
+  button {
+    padding: 10px 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="button"] {
+    background-color: #28a745;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo para remover botão de resultado */
+  button[type="button"].remove-btn {
+    background-color: #dc3545;
+  }
+  
+  button[type="button"].remove-btn:hover {
+    background-color: #c82333;
+  }
+  
+  /* Estilo específico para inputs de resultados */
+  div[formGroupName] {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    border-left: 4px solid #007bff;
+  }
+  
+  /* Estilo para exibir resultados em linhas separadas */
+  div[formArrayName="results"] > div {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo do botão de submit */
+  button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para o botão de adicionar resultados */
+  button[type="button"]:not(.remove-btn) {
+    width: 100%;
+    background-color: #28a745;
+  }
+  
+  button[type="button"]:not(.remove-btn):hover {
+    background-color: #218838;
+  }
+  
+  /* Espaçamento e layout */
+  div {
+    margin-bottom: 20px;
+  }
+  

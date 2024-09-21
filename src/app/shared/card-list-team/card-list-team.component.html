@@ -1,0 +1,27 @@
+<div class="user-card-container">
+  <!-- Campo de Pesquisa -->
+  <div class="search-bar">
+    <input 
+      type="text" 
+      placeholder="Pesquisar usuários..." 
+      [(ngModel)]="searchQuery" 
+      (input)="onSearch()"
+    />
+  </div>
+
+  <!-- Card de Usuário -->
+  <div class="user-card" *ngFor="let user of teams">
+    <div class="user-info">
+      <h3>{{ user.name }}</h3>
+      <p>{{ user.leader }}</p>
+    </div>
+    <div class="user-meta">
+      <span class="role">{{ user.users.length }} Membros</span>
+      <span (click)="onEditUser(user)" class="status" [ngClass]="'active'">Editar</span>
+    </div>
+  </div>
+  <div *ngIf="subChatStep" class="actions">
+    <button class="btn-clear" (click)="onViewMore()">Ver mais</button>
+    <button class="btn-fill" (click)="onAddUser()">Adicionar time</button>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Companhia</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="addNewUser()">
+        <ion-icon name="add"></ion-icon>
+        Adicionar novo usuário
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="content">
+    <app-card-list-user *ngFor="let item of listTeams | async"
+    [titleList]="item.name" [idTeam]="item.id" [team]="item"
+    (deleteUser)="deleteUser('Editar usuário')"></app-card-list-user>
+
+    <div *ngIf="showCreatingTeam" style="width: 300px;">
+    <div  class="user-card-container">
+      <!-- Campo de Pesquisa -->
+      <div class="search-bar">
+        <input 
+          type="text" 
+          placeholder="Nome do time" 
+          [(ngModel)]="creatingTitleList" 
+        />
+      </div>
+    
+     <!-- Campo Selecionar Líder com Autocomplete -->
+     <div class="form-group autocomplete-container">
+      <label for="teamLeader">Líder do Time</label>
+      <input 
+        type="text" 
+        id="teamLeader" 
+        placeholder="Digite para buscar o líder"
+        [(ngModel)]="creatingSelectedLeaderName"
+        (input)="onSearch($event)"
+      />
+      <div *ngIf="showFilterUsers" class="autocomplete-list">
+        <div 
+          *ngFor="let leader of users | async" 
+          (click)="selectLeader(leader)"
+          class="autocomplete-item"
+        >
+          {{ leader.name }}
+        </div>
+      </div>
+    </div>
+
+      <div *ngIf="creatingTitleList.length" class="actions">
+        <button class="btn-clear" (click)="saveNewTeam()">Salvar time</button>
+      </div>
+    </div>
+  </div>
+ 
+    <div class="content__add-team">
+    <ion-button fill="clear" (click)="showCreatingTeam = !showCreatingTeam">
+      {{showCreatingTeam ? 'Cancelar' : 'Adicionar time'}}
+    </ion-button>
+  </div>
+  </div>
+</ion-content>
